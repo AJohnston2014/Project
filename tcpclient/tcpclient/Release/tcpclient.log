@@ -1,0 +1,7 @@
+﻿  main.cpp
+main.cpp(25): warning C4101: 'message': unreferenced local variable
+  Generating code
+  All 94 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  tcpclient.vcxproj -> C:\Users\adrianjohnston\Documents\Visual Studio 2015\Projects\tcpclient\Release\tcpclient.exe
+  tcpclient.vcxproj -> C:\Users\adrianjohnston\Documents\Visual Studio 2015\Projects\tcpclient\Release\tcpclient.pdb (Full PDB)
