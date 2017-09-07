@@ -1,4 +1,0 @@
-﻿  main.cpp
-c:\users\adrianjohnston\documents\visual studio 2015\projects\tcpclient\tcpclient\main.cpp(25): warning C4101: 'message': unreferenced local variable
-  tcpclient.vcxproj -> C:\Users\adrianjohnston\Documents\Visual Studio 2015\Projects\tcpclient\Debug\tcpclient.exe
-  tcpclient.vcxproj -> C:\Users\adrianjohnston\Documents\Visual Studio 2015\Projects\tcpclient\Debug\tcpclient.pdb (Partial PDB)
