@@ -118,14 +118,16 @@ int main()
 	//cout << setBits(&me, x.me.b1 = false, input) << endl;
 	//printf("%d", sizeof(x));
 	//bitField z;
-	int32_t integer = 1;
+	int32_t integer = 7;
 	int32_t bit = -1;
 	int32_t *p = &integer;
+	int32_t number = 0xFF010000;
 	setBit(kp, true, 31);
 	fiveBit(p, false, 31);
 	//z.x.me.n2 = j;
 	buffer[1] = 0; 
 	//getuBits(x, 3);
 	setUBitsTest(me, 31, 16, 1);//works
-	setUBitsTestL(me, 3, 4,7);//works
+	setUBitsTestL( me,3, 4,7);//works
+	setSBitsTest(number, 3, 4, 15);
 }

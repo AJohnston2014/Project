@@ -1,20 +1,20 @@
-#pragma once
+#ifndef foo_h
+#define foo_h
 #include <iostream>
 using namespace std;
 
 
-	struct foo
-		{
-			bool b1;
+struct foo
+{
+	bool b1;
 
-			bool b2;
+	bool b2;
 
-			int32_t n1;
+	int32_t n1;
 
-			uint32_t n2;
+	uint32_t n2;
+};
 
-		}me;
-	
 	
 //Code uses big endian bit order 0,1,2,3,.....
 uint32_t buffer[10];
@@ -315,8 +315,41 @@ void setUBitsTestL(uint32_t& dest, uint32_t leastSigBit, uint32_t bitWidth, uint
 	}
 	dest = value;
 }
+//I want this function to preserve the left hand side. of the destination and change the right side
+void setSBitsTest(int32_t& dest, uint32_t leastSigBit, uint32_t bitWidth, int32_t value)
+{
+	uint32_t maxBits = 31;
+	uint32_t leastSig = leastSigBit;
+	//uint32_t bitwidth = bitWidth;
+	uint32_t mostSig = leastSig - bitWidth + 1;
+	uint32_t rightHandMostSig = leastSig + 1;
+	uint32_t rightHandLeastSig = 31;
+	//uint32_t value=dest;
+	/*if (mostSig > 0)
+	{
 
+	preservedLeastSig = mostSig - 1;
+	}*/
+	// value = dest;
+	uint32_t shifts = maxBits - bitWidth;
+	//	value = value << shifts;
+	//value = value >> shifts;
+	//uint32_t mask = 0xFFFFFFFF << shifts;
+	if (rightHandLeastSig == rightHandMostSig)
+	{
+		return;
+	}
+	for (uint32_t j = 0; j < leastSig + 1; j++)
+	{
+		if (getuBits(dest, j) != 0)
+		{
+			value = value | (1 << (maxBits - j));
+		}
+	}
+	dest = value;
+}
 void serializeStruct(foo) 
 {
 
 }
+#endif	
