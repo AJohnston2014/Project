@@ -17,6 +17,7 @@ struct foo
 const int MAXBITSLOOP = 32;
 const int MOSTSIG = 0;
 
+void setL(int x, int p, int s);
 //Code uses little endian bit order 5,4,3,2,1,0
 
 bool readFrom(uint32_t src, uint32_t bitPosition)
