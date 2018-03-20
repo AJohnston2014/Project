@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "templateBitFieldProject", "templateBitFieldProject\templateBitFieldProject.vcxproj", "{492A182B-6F4A-4A85-B537-99AF955917A6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GoogleTest", "GoogleTest\GoogleTest.vcxproj", "{1499FEBC-8B6F-425E-A7D4-2D8A3A5864C0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "templateBitFieldProjectUnitTest", "templateBitFieldProjectUnitTest\templateBitFieldProjectUnitTest.vcxproj", "{1363B8F6-3297-436F-917F-29BB0765C85F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +25,22 @@ Global
 		{492A182B-6F4A-4A85-B537-99AF955917A6}.Release|x64.Build.0 = Release|x64
 		{492A182B-6F4A-4A85-B537-99AF955917A6}.Release|x86.ActiveCfg = Release|Win32
 		{492A182B-6F4A-4A85-B537-99AF955917A6}.Release|x86.Build.0 = Release|Win32
+		{1499FEBC-8B6F-425E-A7D4-2D8A3A5864C0}.Debug|x64.ActiveCfg = Debug|x64
+		{1499FEBC-8B6F-425E-A7D4-2D8A3A5864C0}.Debug|x64.Build.0 = Debug|x64
+		{1499FEBC-8B6F-425E-A7D4-2D8A3A5864C0}.Debug|x86.ActiveCfg = Debug|Win32
+		{1499FEBC-8B6F-425E-A7D4-2D8A3A5864C0}.Debug|x86.Build.0 = Debug|Win32
+		{1499FEBC-8B6F-425E-A7D4-2D8A3A5864C0}.Release|x64.ActiveCfg = Release|x64
+		{1499FEBC-8B6F-425E-A7D4-2D8A3A5864C0}.Release|x64.Build.0 = Release|x64
+		{1499FEBC-8B6F-425E-A7D4-2D8A3A5864C0}.Release|x86.ActiveCfg = Release|Win32
+		{1499FEBC-8B6F-425E-A7D4-2D8A3A5864C0}.Release|x86.Build.0 = Release|Win32
+		{1363B8F6-3297-436F-917F-29BB0765C85F}.Debug|x64.ActiveCfg = Debug|x64
+		{1363B8F6-3297-436F-917F-29BB0765C85F}.Debug|x64.Build.0 = Debug|x64
+		{1363B8F6-3297-436F-917F-29BB0765C85F}.Debug|x86.ActiveCfg = Debug|Win32
+		{1363B8F6-3297-436F-917F-29BB0765C85F}.Debug|x86.Build.0 = Debug|Win32
+		{1363B8F6-3297-436F-917F-29BB0765C85F}.Release|x64.ActiveCfg = Release|x64
+		{1363B8F6-3297-436F-917F-29BB0765C85F}.Release|x64.Build.0 = Release|x64
+		{1363B8F6-3297-436F-917F-29BB0765C85F}.Release|x86.ActiveCfg = Release|Win32
+		{1363B8F6-3297-436F-917F-29BB0765C85F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -71,17 +71,28 @@ public:
 	 dest = destMasked;
 	 return dest;
  }
+
  template<typename t>
- t& setBitSAnySizeTest(t& dest, t leastSig, t bitWidth, t value)
+ t& templateSetBitSAnySize(t& dest, t leastSig, t bitWidth, t value)
  {
 	 t uMaxBits = sizeof(dest);
 	 uMaxBits = uMaxBits * 8;
-	 uint32_t z
+	 t zero = 0;
+	 t invZero = ~zero;
+	 t mask = invZero << (uMaxBits - bitWidth);
+	 mask = mask >> (uMaxBits - bitWidth);
+	 mask = mask << leastSig;
+	 t invMask = ~mask;
+	 t masked = invMask & dest;
+	 t copyOfValue = value << leastSig;
+	 t mask1 = mask & copyOfValue;
+	 t destMasked = mask1 | masked;
+	 dest = destMasked;
 	 return dest;
  }
  bool getBitsU(uint32_t src, uint32_t bitPosition, uint32_t bitWidth);
 	 
-// bool getBitsS(int32_t src, const uint32_t bitPosition, const uint32_t bitWidth);
+ bool getBitsS(int32_t src, const uint32_t bitPosition, const uint32_t bitWidth);
 };
 
 
