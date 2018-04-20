@@ -22,10 +22,10 @@ TEST(get, GetBitCase2)
 TEST(case1, set8Bit)
 {
 	uint8_t	dest1 = 0x00;
-	uint32_t leastSigBit1 = 1;
+	uint32_t bitPosition = 1;
 	uint32_t bitWidth1 = 1;
-	uint32_t	value1 = 1;
-	EXPECT_EQ(SetBitUAnySize<uint8_t>(dest1, leastSigBit1, bitWidth1, value1), 0x02);
+	bool value1 = 1;
+	EXPECT_EQ(setBitU<uint8_t>(dest1, bitPosition, value1), 0x02);
 }
 TEST(case2, set32BitVersionCase13)
 {
@@ -34,7 +34,7 @@ TEST(case2, set32BitVersionCase13)
 	uint32_t leastSigBit0 = 0;
 	uint32_t bitWidth0 = 1;
 	uint32_t value0 = 1;
-	EXPECT_EQ(SetBitUAnySize<uint32_t>(dest0, leastSigBit0, bitWidth0, value0), 0x01);
+	EXPECT_EQ(setBitsUReduced<uint32_t>(dest0, leastSigBit0, bitWidth0, value0), 0x01);
 }
 
 TEST(set, SetBitsCase1)
@@ -43,7 +43,7 @@ TEST(set, SetBitsCase1)
 	uint8_t	dest = 0;
 	uint32_t bitPosition = 7;
 	bool value = true;
-	EXPECT_EQ(SetBitUAnySize<uint8_t>(dest, bitPosition,1,value), 0x80);
+	EXPECT_EQ(setBitU<uint8_t>(dest, bitPosition,value), 0x80);
 	//	expected result = 0x80
 }
 TEST(set, SetBitsCase2)
@@ -52,7 +52,7 @@ TEST(set, SetBitsCase2)
 	uint8_t	dest1 = 0xFF;
 	uint32_t bitPosition1 = 0;
 	bool value1 = false;
-	EXPECT_EQ(SetBitUAnySize<uint8_t>(dest1, bitPosition1,1,value1), 0xFE);
+	EXPECT_EQ(setBitU<uint8_t>(dest1, bitPosition1,value1), 0xFE);
 }
 TEST(case0, set8BitVersionCase0)
 {
@@ -61,7 +61,7 @@ TEST(case0, set8BitVersionCase0)
 	uint32_t leastSigBit0 = 0;
 	uint32_t bitWidth0 = 5;
 	uint32_t value0 = 3;
-	EXPECT_EQ(SetBitUAnySize<uint8_t>(dest0, leastSigBit0, bitWidth0, value0), 163);
+	EXPECT_EQ(setBitsUReduced<uint8_t>(dest0, leastSigBit0, bitWidth0, value0), 163);
 }
 TEST(case1, set8BitVersionCase1)
 {
@@ -70,7 +70,7 @@ TEST(case1, set8BitVersionCase1)
 	uint32_t leastSigBit0 = 1;
 	uint32_t bitWidth0 = 1;
 	uint32_t value0 = 1;
-	EXPECT_EQ(SetBitUAnySize<uint8_t>(dest0, leastSigBit0, bitWidth0, value0), 0x02);
+	EXPECT_EQ(setBitsUReduced<uint8_t>(dest0, leastSigBit0, bitWidth0, value0), 0x02);
 }
 TEST(case2, set8BitVersionCase2)
 {
@@ -79,7 +79,16 @@ TEST(case2, set8BitVersionCase2)
 	uint32_t	leastSigBit = 7;
 	uint32_t	bitWidth = 1;
 	uint32_t	value = 0;
-	EXPECT_EQ(SetBitUAnySize<uint8_t>(dest, leastSigBit, bitWidth, 0), 0x7F);
+	EXPECT_EQ(setBitsUReduced<uint8_t>(dest, leastSigBit, bitWidth, 0), 0x7F);
+}
+TEST(case13, set32BitVersionCase13)
+{
+	//Case1 
+	uint32_t dest0 = 0x00;
+	uint32_t leastSigBit0 = 1;
+	uint32_t bitWidth0 = 1;
+	uint32_t value0 = 1;
+	EXPECT_EQ(setBitsUReduced<uint32_t>(dest0, leastSigBit0, bitWidth0, value0), 0x02);
 }
 TEST(case3, set8BitVersionCase3)
 {
@@ -88,7 +97,7 @@ TEST(case3, set8BitVersionCase3)
 	uint32_t leastSigBit1 = 5;
 	uint32_t bitWidth1 = 3;
 	uint32_t	value1 = 13;
-	EXPECT_EQ(SetBitUAnySize<uint8_t>(dest1, leastSigBit1, bitWidth1, value1), 0xA0);
+	EXPECT_EQ(setBitsUReduced<uint8_t>(dest1, leastSigBit1, bitWidth1, value1), 0xA0);
 }
 TEST(case11, set8BitVersionCase11)
 {
@@ -97,7 +106,7 @@ TEST(case11, set8BitVersionCase11)
 	uint32_t leastSigBit0 = 1;
 	uint32_t bitWidth0 = 1;
 	uint32_t value0 = 1;
-	EXPECT_EQ(SetBitUAnySize<uint8_t>(dest0, leastSigBit0, bitWidth0, value0), 0x02);
+	EXPECT_EQ(setBitsUReduced<uint8_t>(dest0, leastSigBit0, bitWidth0, value0), 0x02);
 }
 
 TEST(casegetS1, 8itGets)
@@ -115,7 +124,7 @@ TEST(case4, set8BitVersionCase4)
 	uint32_t leastSigBit2 = 0;
 	uint32_t bitWidth2 = 7;
 	uint32_t	value2 = 0x55;
-	EXPECT_EQ(SetBitUAnySize<uint8_t>(dest2, leastSigBit2, bitWidth2, value2), 0xD5);
+	EXPECT_EQ(setBitsU<uint8_t>(dest2, leastSigBit2, bitWidth2, value2), 0xD5);
 }
 TEST(case5, set8BitVersionCase5)
 {
@@ -124,16 +133,16 @@ TEST(case5, set8BitVersionCase5)
 	uint32_t leastSigBit5 = 4;
 	uint32_t bitWidth5 = 3;
 	uint32_t	value5 = 13;
-	EXPECT_EQ(SetBitUAnySize<uint8_t>(dest5, leastSigBit5, bitWidth5, value5), 0x50);
+	EXPECT_EQ(setBitsU<uint8_t>(dest5, leastSigBit5, bitWidth5, value5), 0x50);
 
 }
-TEST(caseS4, set32BitSVersioncase4) // test failed
+TEST(caseS4, set32BitSVersioncase4)
 {
 	uint32_t dest = 0xAA;
 	uint32_t leastSigBit = 0;
 	uint32_t bitWidth = 5;
 	int32_t	value = -5;
-	EXPECT_EQ(SetBitSAnySize<>(dest, leastSigBit, bitWidth, value), 187);
+	EXPECT_EQ(setBitsS<>(dest, leastSigBit, bitWidth, value), 187);
 }
 TEST(caseS14, set32BitSVersioncase14)
 {
@@ -141,8 +150,7 @@ TEST(caseS14, set32BitSVersioncase14)
 	uint32_t leastSigBit = 2;
 	uint32_t bitWidth = 4;
 	int32_t	value = 0;
-	//templateSetBitSAnySize<uint32_t, int32_t>(dest, leastSigBit, bitWidth, value);
-	EXPECT_EQ(SetBitSAnySize<>(dest, leastSigBit, bitWidth, value), -61);// check expected answer
+	EXPECT_EQ(setBitsS<>(dest, leastSigBit, bitWidth, value), -61);
 }
 TEST(Case2, Set8BitSVersionCase2)
 {
@@ -151,43 +159,35 @@ TEST(Case2, Set8BitSVersionCase2)
 	uint32_t leastSigBit2 = 5;
 	uint32_t bitWidth2 = 3;
 	int32_t	value2 = -8;
-	EXPECT_EQ(SetBitSAnySize<>(dest2, leastSigBit2, bitWidth2, value2), 0);
+	EXPECT_EQ(setBitsS<>(dest2, leastSigBit2, bitWidth2, value2), 0);
 }
-TEST(Case3, Set8BitSVersionCase3) //test failed
+TEST(Case3, Set8BitSVersionCase3) 
 {
 	//case 3
-	uint8_t dest = 0x55;
-	uint8_t leastSigBit = 3;
-	uint8_t bitWidth = 5;
+	uint32_t dest = 0x55;
+	uint32_t leastSigBit = 3;
+	uint32_t bitWidth = 5;
 	int32_t	value = -10;
-	EXPECT_EQ(SetBitSAnySize<>(dest, leastSigBit, bitWidth, value), 181);
+	EXPECT_EQ(setBitsS<>(dest, leastSigBit, bitWidth, value), 181);
 }
-TEST(Case4, Set8BitSVersionCase4) //test failed
+TEST(Case4, Set8BitSVersionCase4) 
 {
 	//case 4
 	uint32_t	dest = 0xFF;
 	uint32_t leastSigBit = 2;
 	uint32_t bitWidth = 4;
 	int32_t	value = 0;
-	EXPECT_EQ(SetBitSAnySize<>(dest, leastSigBit, bitWidth, value), 195);
+	EXPECT_EQ(setBitsS<>(dest, leastSigBit, bitWidth, value), 195);
 }
-TEST(case13, set32BitVersionCase13)
-{
-	//Case1 
-	uint32_t dest0 = 0x00;
-	uint32_t leastSigBit0 = 1;
-	uint32_t bitWidth0 = 1;
-	uint32_t value0 = 1;
-	EXPECT_EQ(SetBitUAnySize<uint32_t>(dest0, leastSigBit0, bitWidth0, value0), 0x02);
-}
+
 TEST(caseS18, set32BitSVersioncase18)
 {
 	uint32_t dest1 = 0xAAAAAAAA;
-	int8_t dest = 0xAA;
+	//uint_t dest = 0xAA;
 	uint32_t leastSigBit = 0;
 	uint32_t bitWidth = 5;
 	int32_t	value = -5;
-	EXPECT_EQ(SetBitSAnySize<>(dest1, leastSigBit, bitWidth, value), -1431655749);
+	EXPECT_EQ(setBitsS<>(dest1, leastSigBit, bitWidth, value), -1431655749);
 }
 TEST(caseS15, set32BitSVersioncase15)
 {
@@ -195,5 +195,5 @@ TEST(caseS15, set32BitSVersioncase15)
 	uint32_t leastSigBit = 0;
 	uint32_t bitWidth = 5;
 	int32_t	value = -5;
-	EXPECT_EQ(SetBitSAnySize<>(dest, leastSigBit, bitWidth, value), 0x1B);// check expected answer
+	EXPECT_EQ(setBitsS<>(dest, leastSigBit, bitWidth, value), 0x1B);
 }
