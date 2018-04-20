@@ -43,7 +43,6 @@ TEST(set, SetBitsCase1)
 }
 TEST(set, SetBitsCase2)
 {
-	//setBit case 2:
 	uint8_t	dest1 = 0xFF;
 	uint32_t bitPosition1 = 0;
 	bool value1 = false;
@@ -75,7 +74,6 @@ TEST(case2, set8BitVersionCase2)
 }
 TEST(case13, set32BitVersionCase13)
 {
-	//Case1 
 	uint32_t dest0 = 0x00;
 	uint32_t leastSigBit0 = 1;
 	uint32_t bitWidth0 = 1;
