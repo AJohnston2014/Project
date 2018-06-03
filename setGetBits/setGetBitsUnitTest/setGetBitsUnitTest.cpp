@@ -178,3 +178,27 @@ TEST(caseS15, set32BitSVersioncase15)
 	int32_t	value = -5;
 	EXPECT_EQ(setBitsS<>(dest, leastSigBit, bitWidth, value), 0x1B);
 }
+TEST(casegetS99, 8bitGets)
+{
+	int32_t dest = -42;
+	uint32_t leastSigBit = 3;
+	uint32_t bitWidth = 5;
+	//EXPECT_EQ(getBitsS<>(dest, leastSigBit, bitWidth),1D);
+	getBitsS<>(dest, leastSigBit, bitWidth);
+}
+TEST(casegetS100, 8bitGets)
+{
+	int32_t dest = 0x1D;
+	uint32_t leastSigBit = 0;
+	uint32_t bitWidth = 5;
+	//EXPECT_EQ(getBitsS<>(dest, leastSigBit, bitWidth),1D);
+	getBitsS<>(dest, leastSigBit, bitWidth);
+}
+TEST(casegetS101, 8bitGets)
+{
+	int32_t dest = -42;
+	uint32_t leastSigBit = 3;
+	uint32_t bitWidth = 5;
+	//EXPECT_EQ(getBitsS<>(dest, leastSigBit, bitWidth),1D);
+	getBitsS<int32_t,uint32_t>(dest, leastSigBit, bitWidth);
+}
